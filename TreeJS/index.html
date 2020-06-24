@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>sample</title>
+    <meta charset="utf-8"/>
+    <script src="./three.min.js"></script>
+    <script>
+        window.addEventListener("load",init);
+        function init(){
+            const renderer = new THREE.WebGLRenderer({
+                canvas: document.Selector("myCanvas")
+            });
+            renderer.setSize(960,540);
+
+            const scene = new THREE.Scene();
+
+            const camera = new THREE.PrespectiveCamera(45, 960/540);
+
+            const geometry = new THREE.BoxGeometry(500,500,500);
+            const material = new THREE.MeshNoramlMaterial();
+            const box = new THREE.Mesh(geometry,material);
+
+            scene.add(box);
+            tick();
+
+            function tick(){
+                requestAnimationFrame(tick);
+
+                box.rotation.y += 0.01; 
+                renderer.render(scene, camera);
+            }
+
+        }
+    </script>
+</head>
+<body>
+    <canvas id="myCanvas"></canvas>
+</body>
+</html>
